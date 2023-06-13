@@ -1,0 +1,89 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Simple}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor=black, % Overview
+    urlcolor=blue    % \href#2
+}
+
+\usepackage{graphicx} % Allows including images
+
+%----------------------------------------------------------------------------------------
+%	Macros
+%----------------------------------------------------------------------------------------
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\param}[1]{{$\langle#1\rangle$}}
+\def\figs{figs7}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+% The title
+\title[short title]{ILDG Lunch}
+\subtitle{\includegraphics[scale=0.5]{ildg-logo}}
+
+\author{ILDG Working Groups}
+\date{June 16, 2023 } % Date, can be changed to a custom date
+
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\begin{frame}
+    % Print the title page as the first slide
+    \titlepage
+
+\end{frame}
+
+\begin{frame}{Overview}
+    % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+    \tableofcontents
+\end{frame}
+
+%================================================
+\section{Plans for ILDG 2.0}
+%================================================
+\begin{frame}{Plans for ILDG 2.0}
+  Keep basic concepts of ILDG 1.0 (well defined metadata schema, interoperable services, \ldots),
+  but make implementation fully compliant with FAIR principles and upgrade to modern technologies
+
+  \vspace*{3mm}
+  Restore and improve usability:
+  \begin{itemize}
+  \item Support for {\bf DOI registration and data publishing}\\[1mm]
+    {\small
+      Then (sets of) ensembles in ILDG become also \alert{findable} e.g. by\\
+      \hspace*{2em}INSPIRE or other search engines
+      ~${}^{\longrightarrow}_{DOI}$~ landing pages
+      ~${}^{\longrightarrow}_{MDC}$~ ensemble IDs
+      \\
+      and properly \alert{citable} in journal papers
+    }
+  \item Adjustment of {\bf metadata schemas} and data format
+  \item User {\bf tools and documentation}!
+  \end{itemize}
+
+  \vspace*{3mm}
+  Upgrade of technologies:
+  \begin{itemize}
+  \item Token-based authentication\\
+    (commonly used for cloud services and replacing cumbersome Grid Certificates)
+  \item REST APIs for services
+  \end{itemize}
+
+\end{frame}
+
+
+
+\end{document}
+
+

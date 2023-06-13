@@ -1,0 +1,332 @@
+\documentclass{article}
+
+
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Hands-on Workshop 2023}
+\author{ILDG Working Groups}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Notes on preparation of the Workshop
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{TODO}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Organizational}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+    \item prepare and announce hands-on exercises for WG meeting: OK(6.6.)
+    \item prepare bulletin for participants (see     \href{https://gitlab.desy.de/ildg/hands-on/organization/-/blob/main/bulletin1.txt}{gitlab})
+    \begin{itemize}
+        \item instructions for preparation (certificate, VOMS, container) \hfill ALL
+        \item zoom link 
+        \item mailing list {\tt ildg-hands-on@desy.de} (subscribed: BS, CSS, CU, DP, GH, GP, HM, HS, TY)
+        \end{itemize}
+    \item send bulletin to participants: OK(7.6.)\\
+    AND individually to late registrants!!! \hfill ok(ID$\le$ 38)
+    \item update \href{https://indico.desy.de/event/39311/} {indico page} with info from bulletin?
+    \item find presenters
+    \begin{itemize}
+        \item Intro: Francesco
+        \item FAIR: Craig
+        \item Services: Hubert
+        \item Markup: Dirk
+        \item Wrap-up   : none (participants + chair)
+        \item Outlook: Hideo
+    \end{itemize}
+    \item prepare lectures \hfill presenters + ALL
+    \item prepare exercises (with instructions) \hfill CU+ALL
+    \item goup participants for exercises (see 
+    \href{https://gitlab.desy.de/ildg/hands-on/organization/-/blob/main/groups.txt}{groups.txt in gitlab})
+    \hfill $\le$ June 8\\
+      Reschedule Session 2b to 9:30--11:00 UTC for better distribution of participants ???
+    \item tutors
+    \begin{itemize}
+        \item day 1: BS, CU, CSS, GP
+        \item day 2: DP?, HM, GH, CU, CSS
+    \end{itemize}
+    \item \href{https://uni-bielefeld.zoom.us/j/67037400662?pwd=TTJ2WTYzMXZnVXVwdndYK2V1bU1kZz09}{zoom} meeting of turors for dry-run of exercises
+    \hfill{June 12th at 11:00 UTC}\\
+    \item prepare template for MD requests \hfill MDWG 
+\end{itemize}
+
+\subsection{Practical}
+%%%%%%%%%%%%%%%%%%%%%%%
+{\bf Before workshop}
+\begin{itemize}
+    \item setup slack (1 org + 1 general + 1/breakout) \hfill{GP}
+    \item backup of MDC data \hfill{BS + YN}
+    \item protection of SE data (chmod -w): OK(AH 8.6.)
+    \item FacetNavi and Bielefeld inteface???
+    \item prepare tools
+    \begin{itemize}
+        \item try-client (see \href{https://gitlab.desy.de/ildg/hands-on/try-client}{gitlab})
+        \item ildg-binary
+        \item XML pre-processing
+    \end{itemize}
+    \item prepare HOWTO files \hfill ALL
+    \item upload tools and HOWTO files to \href{https://gitlab.desy.de/ildg/hands-on/material}{gitlab}
+    \item revise web page (e.g. {\tt Services.xml})
+    \item prepare questionaire
+    \item prepare dummy XML
+    \item register dummy XML in MDC
+    \item prepare dummy binaries (\href{srm://globe-door.ifh.de/pnfs/ifh.de/acs/grid/ildg/hands-on/test/hubert}{raw links})
+    \item create for each collaboration \href{srm://globe-door.ifh.de/pnfs/ifh.de/acs/grid/ildg/hands-on}{SE directories}
+    \item build and upload container images to \href{https://gitlab.desy.de/ildg/hands-on/workshop-image}{girlab}: OK(BS)
+    \item upload exercise material to \href{https://gitlab.desy.de/ildg/hands-on/material}{gitlab}
+    \item register participants in VOMS \hfill{HS}
+    \item extract certificate DNs for tutors 
+    (see \href{https://gitlab.desy.de/ildg/hands-on/material}{certificate-dn.txt in gitlab})     \hfill{HS}
+    \item create projects in ACS
+    \item register participants as project managers in ACS
+    \item update MDC of JLDG \hfill{BS,YN}
+\end{itemize}
+
+{\bf During workshop}
+\begin{itemize}
+    \item distribute slack links \hfill GP
+    \item send links for recorded lectures to US participants \hfill CSS
+    \item announce that participants are asked to prepare summary slide for warp-up \hfill tutors
+\end{itemize}
+
+{\bf After workshop}
+\begin{itemize}
+    \item delete participants with CIlogon OpenID from VOMS \hfill{HS}
+    \item clean up ACS and SE
+    \item restore access permissions for LDG data \hfill{AH}
+\end{itemize}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lectures}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This is just a collection of ideas and topics to include. Please
+extend and comment.
+
+For more details and material, see also individual skeletons {\tt l*.tex}
+
+TY put slides (Material/HackLatt2009-ILDG.[ppt,pdf]) prepared for a workshop in 2009.
+Although some contents are old/obsolete and have mistakes, you may extract useful figures etc
+for the Hands-On.
+
+\subsection{Introduction (30 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Presenter: Francesco\\
+Draft: see {\tt Material/ILDG-HandsOn-Introduction.pptx} and {\tt presentations/draft-intro.pdf}
+\begin{itemize}
+    \item Welcome to Hands-On
+    \item Motivation and Aims (very briefly)
+    \begin{itemize}
+        \item Share precious data
+        \item Quality of lattice data management
+        \item Requirements of funding agencies
+        \item Visibility of (and credits for) data generation efforts
+    \end{itemize}
+        \item Short history 
+    \begin{itemize}
+        \item ahead of (FAIR) time
+        \item rise and fall
+        \item re-activation and modernization    
+    \end{itemize}
+        \item ILDG Design Strategy/Basic Concepts \cite{Karsch:2022tqw}
+        \begin{itemize}
+            \item a Grid of autonomous regional grids (fig, fig)
+            \item Virtual Organization (membership)
+            \item common data format and metadata description
+            \item common API to access Databases in RGs
+        \end{itemize}
+        \item Global Structure \cite{Karsch:2022tqw}
+        \begin{itemize}
+            \item data and metadata components (fig) (mention QCDml here. How about mc:// lfn:// ?)
+            \item middleware components (fig)
+        \end{itemize}
+        \item Current ILDG \cite{Karsch:2022tqw}
+        \begin{itemize}
+            \item LDG, JLDG, UKQCD, USQCD, CSSM (what to mention, need to compile status of RGs)
+        \end{itemize}
+    \item Towards ILDG2
+    \begin{itemize}
+        \item relax authentication (grid certificate $\to$ idp+AAI)
+        \item relax QCDml (QCD markup language, a rule set to describe ensemble/config metadata)
+        \item DOI (digital object identifier) registration
+        \item other modernization and extension 
+        \end{itemize}
+    \item Concluding remarks
+    \begin{itemize}
+        \item data consumer vs. data provider
+        \item restricted (within or between collaborations) vs. public sharing
+        \item work in progress
+        \item not a service but a community effort
+    \end{itemize}
+\end{itemize}
+
+\subsection{FAIR Data (30 min)}
+%%%%%%%%%%%%%%%%%%%%%%%
+Presenter: Craig
+\begin{itemize}
+    \item Good introduction in \cite{Karsch:2022tqw}
+\end{itemize}
+
+\subsection{ILDG Services and Middleware (45 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Presenter: HS
+Draft: see {\tt presentations/draft-mw.pdf}
+\begin{itemize}
+    \item recall use-cases
+    \item conceptual
+    \begin{itemize}
+        \item why metadata separate from data
+        \item why distributed services
+        \item authentication and authorization (CA - VOMS - ACS)
+    \end{itemize}
+    \item identifiers and entities (unless already in FAIR)
+    \item descriptive vs. administrative MD
+    \item MDC
+    \item multiple (web-)intefaces
+    \item FC
+    \item SE
+    \item reminder on AUP, VO policy, resource allocation
+    \item use-cases vs. high-level operations (lput, lget, ...) vs. basic operations of each service
+    \item general steps vs. collaboration-specific provisioning
+    \item conventions (unique and regular LFN-MCU, SURL) 
+    \item consistency conditions
+\end{itemize}
+
+
+\subsection{Metadata and Markup (45-60 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Presenter: Dirk
+\begin{itemize}
+    \item Introduction
+    \begin{itemize}
+        \item types of metadata
+        \item hierarchical $\to$ tree (with optional sibling order)\\
+        node = ( name, attributes, value )
+        \item format vs. schema
+        \item alternative formats
+    \end{itemize}
+    \item XML and XML Schema
+    \item QCDml \cite{Maynard:2004wg,Coddington:2007gz} \\
+    Metadata for ensemble and configuration are necessary.
+    QCDml is an XML-based markup language
+    \cite{Maynard:2004wg,Coddington:2007gz}.
+    Metadata Working Group has been working for QCDml.
+    Curerent versions are QCDmlEnsemble 1.4.8 and
+    QCDmlConfig 1.3.1.
+
+    \item Schema properties (QCDml specific):
+        \begin{itemize}
+        \item No attributes (exception: root)
+        \item Only pre-defined element names (exception: free sub-trees)
+        \item No mixed elements \\
+        (number of leaves in Config and Ensemble)
+        \item Fixed order of (most) elements
+        \end{itemize}
+    \item Known shortcomings (and list of pending adjustments?)
+        \begin{itemize}
+        \item documentation
+        \item license
+        \item multiple configs
+        \item further gauge groups and actions
+        \item ...
+        \end{itemize}
+    \item How to markup
+    \begin{itemize}
+        \item templates
+        \item dummy values
+        \item syntax trees
+    \end{itemize}
+    Mention GDPR concerns?
+    \item Towards QCDml 2.0 (HS: only in outlook!?)
+\end{itemize}
+
+\subsection{Wrap-up of exercises and markup experiments (45 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Chair: ???
+Panel-discussion / summary presentations by participants (1 slide / collaboration)
+\begin{itemize}
+    \item middleware
+    \item markup
+\end{itemize}
+
+\subsection{Outlook and directions for ILDG 2 (30-45 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Presenter: Hideo
+\begin{itemize}
+    \item tools (and active participation of community)
+    \item stabilizing services
+    \item transition to IAM and token based
+    \item MD adjustment and revision
+    \item DOI and publishing
+    \item additional binary format (HDF5)
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For collections of ideas, see
+\begin{itemize}
+    \item https://gitlab.desy.de/ildg/hands-on/material/-/blob/main/exercises/exercise-proposal.md
+    \item https://gitlab.desy.de/ildg/hands-on/material/-/blob/main/exercises/hs
+\end{itemize}
+\subsection{Download (day 1)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+    \item start with web interface?
+    \item simple listing
+    \item get XML from both MDC
+    \item inspect XML in different representations (xmllint, tree)
+    \item examples of Xpath searches
+    \item find SURL (starting to use proxy)
+    \item understand access control settings
+    \item download binary ({\tt gfal-copy})
+    \item inspect binary
+    \item verify checksum
+    \item find and download dummy XML for day 2
+\end{itemize}
+
+\subsection{Markup and upload (day 2)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+    \item validate modified dummy XML
+    \item create Config XML
+    \item preprocess Config XML template
+    \item draft project-specific Ensemble XML
+    \item upload draft XML to MDC
+    \item pack binary
+    \item upload binary ({\tt gfal-copy})
+    \item verify download of uploaded (meta)data
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Questionaire}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Collect and formulate questions on
+\begin{itemize}
+    \item Each lecture (content, relevance, duration)
+    \item Each exercise (instructions, difficulty, relevance)
+    \item ILDG perspectives (metadata schema, tools, own participation and contributions, e.g. working groups and development of tools, expected volume and timeline for uploads from own collaboration) 
+\end{itemize}
+here:
+...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
