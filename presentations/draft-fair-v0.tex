@@ -44,10 +44,86 @@
 
 \begin{frame}{Overview}
     % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-    \tableofcontents
+ %   \tableofcontents
+
+\begin{itemize}
+    \item Background to storing data
+     \item Introducing FAIR
+    \item Lattice data goes FAIR
+\end{itemize}
+ 
 \end{frame}
 
 %----------------------------------------------------------------------------------------
+\section{Background}
+
+\begin{frame}{Introducing databases}
+
+\begin{itemize}
+    \item In the 1960s companies such as IBM started to develop databases to store 
+           information in a systematic way
+\item Sabre (travel reservation system) was the first commercial large scale database
+    \item After some experimentation,  relational database were developed where the information is stored in tables and a query language called SQL was used to extract information from the tables.
+
+    \item There is a schema that defines the column names and data types in the table. 
+\end{itemize}
+
+\begin{table}
+\begin{tabular}{ c c c}
+  FarmID & Name              & Acres \\  \hline
+   1     & Black Hallow Farm & 500  \\
+   2     & Robinwood Farm    & 4000 \\
+\end{tabular}
+\caption{Farm table}
+\end{table}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The evolution of databases}
+
+From the 1970s to the late 1990s relational databases were dominant. 
+
+\vspace{1cm}
+However
+\begin{itemize}
+    \item Relational databases didn't map well to object oriented languages such as c++, so object orientated databases were developed (but not widely used.)
+\item The development of the original web motivated researchers to develop a \textbf{semantic web}. There is a lot of information stored in a web page.  Tim Berners-Lee wanted it be possible to use this information in a systematic way. The semantic web didn't take off, but one of the technologies developed was XML.
+
+\item The storage of large quantities of social media posts and images motivated researchers to develop databases which were not based on tables.
+Examples are graph and document databases. Generically these are known as \textbf{NoSQL databases}.
+
+    
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{What is the dream?} 
+
+From \url{https://www.physics.nat.fau.eu/2021/07/05/fairmat-lifting-the-treasure-trove-of-materials-data/}
+Using optoelectronics as an example, the goal is to discover and investigate highly efficient, low-cost, and nontoxic semiconductors with optimal properties for devices and systems for renewable energy generation and conversion.
+
+\vspace{0.5 cm}
+
+\begin{itemize}
+
+\item If scientific data from many different sources (experiments or simulations)  can be searched, then this could speed up scientific discovery
+
+\item Useful data sets need to be found.
+
+\item Data from the different sources need to be combined.
+
+\item The data needs to be properly described.
+
+\item The data needs to be readable by both humans and machines.
+\end{itemize}
+
+
+
+\end{frame}
+
 %================================================
 \section{Lattice Data goes FAIR}
 %================================================
