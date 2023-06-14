@@ -95,7 +95,7 @@
 %================================================
 \begin{frame}{Use Cases}
   ILDG needs to support 4 different use cases
-  (and user requiremnts) \\
+  (and user requirements) \\
   for sharing and exchanging of gauge configurations:
 
   \begin{center}
@@ -108,7 +108,7 @@
       &&\\ \hline \hline &&\\
       \bf community-wide & \green \Dok & \green \Dok 
       \\  sharing &&
-      \\ (``public'' or ``published'') &&
+      \\ (``public'' or ``published''?) &&
       \\ \hline && \\
       \bf collaboration-internal  & \green \Dok & \green \Dok 
       \\  sharing &&
@@ -408,7 +408,7 @@
     \hspace*{5mm}\alert{Level of Assurance} (LoA)
 
     \vspace*{5mm}
-    \Darrow\ You need to respect rules\\
+    \Darrow\ Users need to respect rules\\
     \hspace*{5mm} AUP: SPs $\leftrightarrow$ users\\
     \hspace*{5mm} VO Policy: users $\leftrightarrow$ users
 
@@ -495,9 +495,9 @@
 \begin{frame}{Metadata Catalogue (MDC)}
 
   {\bf Key purpose:} ID regisration and metadata search
-  \begin{displaymath}
-        ID \longleftrightarrow metadata
-  \end{displaymath}
+  \begin{center}
+        \fbox{ID $\longleftrightarrow$ metadata}
+  \end{center}
   
   {\bf Database schema}
   \begin{center}
@@ -526,9 +526,9 @@
 \begin{frame}{File Catalogue (FC)}
 
   {\bf Provides:} functional (many-to-one) relation 
-  \begin{displaymath}
-      FC: SURL \longrightarrow LFN
-  \end{displaymath}
+  \begin{center}
+    \fbox{FC: SURL $\longrightarrow$ LFN}
+  \end{center}
   
   {\bf Database schema}
   \begin{center}
@@ -549,7 +549,11 @@
 \end{frame}
 %------------------------------------------------
 \begin{frame}{New Implementation of MDC and FC}
-  \vspace*{-10mm}
+
+  \vspace*{-5mm}
+  \hfill \includegraphics[height=17mm]{figs1/PUNCH4NFDI-Logo_RGB.jpg}
+
+  \vspace*{-22mm}
   \begin{center}
     (by Basavaraja BS $@$ DESY/NIC)
   \end{center}
@@ -574,6 +578,55 @@
 \end{frame}
 %================================================
 \section{Interacting with ILDG Services}
+%------------------------------------------------
+\begin{frame}{Interaction with ILDG Services}
+
+  \begin{center}
+    \includegraphics[height=35mm]{\figs/ildg-access2}
+  \end{center}
+
+  \begin{dinglist}{114}
+    \item Catalogues of all regional grids are \alert{interoperable} due to standardized API
+
+    \item  High-level user operations may need several ($\le 10$) low-level requests (e.g. HTTP)\\
+      but still few compared to other web pages (implicitly handled by your browser)
+      \bi
+    \item www.google.com: O(25) requests 
+    \item www.github.com: O(100) requests \hspace*{20mm} (try Ctrl-Shift-I in firefox)
+    \item your favourite airline: O(200) requests
+      \ei
+  \end{dinglist}
+  \vfill
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Consistency of ILDG Data}
+  \begin{dinglist}{114}
+    \item ILDG is logically a distributed relational database with 2 kinds of entities
+      \bi
+    \item configs: metadata + (binary) data
+    \item ensembles: metadata
+    \ei
+    and corresponding primary keys
+    \bi
+    \item \parbox{12em}{LFN (dataLFN):} \alert{\tt lfn://{\it rg}/{\it collaboration}/{\it project}/{\it name}}
+    \item \parbox{12em}{MCU (markovChainURI):} \alert{\tt mc://{\it rg}/{\it collaboration}/{\it project}}
+    \ei
+
+  \item[\ding{42}] Persistence and globally unique identifiers needs to be guaranteed by data providers.
+  
+  \item Typical inconsistencies (RDB anomalies) may arise from
+  \bi
+  \item failures of individual services
+  \item incorrect use of low-level tools
+  \ei
+  and can only be
+  \bi
+  \item detected and fixed by regular scans (with possibly prohibitive cost)
+  \item checked and handled by high-level tools (including roll-back)
+  \ei
+  \end{dinglist}
+  \vfill
+\end{frame}
 %------------------------------------------------
 \begin{frame}{Use Cases and  ``ltools''}
 \def\lcol{0.45\textwidth}
@@ -639,55 +692,6 @@
 
 \end{frame}
 %------------------------------------------------
-\begin{frame}{Interaction with ILDG Services}
-
-  \begin{center}
-    \includegraphics[height=35mm]{\figs/ildg-access2}
-  \end{center}
-
-  \begin{dinglist}{114}
-    \item Catalogues of all regional grids are \alert{interoperable} due to standardized API
-
-    \item  High-level user operations may need several ($\le 10$) low-level requests (e.g. HTTP)\\
-      but still few compared to other web pages (implicitly handled by your browser)
-      \bi
-    \item www.google.com: O(25) requests 
-    \item www.github.com: O(100) requests \hspace*{20mm} (try Ctrl-Shift-I in firefox)
-    \item your favourite airline: O(200) requests
-      \ei
-  \end{dinglist}
-  \vfill
-\end{frame}
-%------------------------------------------------
-\begin{frame}{Consistency of ILDG Data}
-  \begin{dinglist}{114}
-    \item ILDG is logically a distributed relational database with 2 kinds of entities
-      \bi
-    \item configs: metadata + (binary) data
-    \item ensembles: metadata
-    \ei
-    and corresponding primary keys
-    \bi
-    \item \parbox{12em}{LFN (dataLFN):} \alert{\tt lfn://{\it rg}/{\it collaboration}/{\it project}/{\it name}}
-    \item \parbox{12em}{MCU (markovChainURI):} \alert{\tt mc://{\it rg}/{\it collaboration}/{\it project}}
-    \ei
-
-  \item[\ding{42}] Persistence and global unique identifiers needs to be guaranteed by data providers.
-  
-  \item Typical inconsistencies (RDB anomalies) may arise from
-  \bi
-  \item failures of individual services
-  \item incorrect use of low-level tools
-  \ei
-  and can only be
-  \bi
-  \item detected and fixed by regular scans (with possibly prohibitive cost)
-  \item checked and handled by high-level tools (including roll-back)
-  \ei
-  \end{dinglist}
-  \vfill
-\end{frame}
-%------------------------------------------------
 \begin{frame}{Examples of Interactions with ILDG Services}
 
   \begin{dinglist}{114} \setlength{\itemsep}{2mm}
@@ -732,7 +736,7 @@
     \item {\tt try-mdc}, {\tt try-fc}, {\tt try-acs} (just wrapper scripts for {\tt curl})
     \item {\tt lime-ls}, {\tt lime-cat1}, {\tt lime-pack1}
     \item {\tt ildg-cksum}, {\tt ildg-binary}
-    \item {\tt md-convert}
+    %%% \item {\tt md-convert}
     \ei
 
     \ldots\ you all can improve them and contribute to develop proper user tools!
@@ -745,14 +749,16 @@
   \begin{dinglist}{114}
   \item Required SW packages are installed in the workshop image (docker + apptainer)\\
     which you should have running according to the
-    \href{https://gitlab.desy.de/ildg/hands-on/workshop-image/blob/main/README.md}{instructions} .
-    In particular, the\\ container includes
-    \bi
-    \item {\tt voms-proxy-init}
-    \item {\tt gfal} commands
-      (\href{http://grid-deployment.web.cern.ch/grid-deployment/dms/dmc/docs/gfal2-2.10.2/}{Grid File Access Library})
-    \item {\tt curl} (version working with proxy certificates) and other utilities
-   \ei
+    \href{https://gitlab.desy.de/ildg/hands-on/workshop-image/blob/main/README.md}{instructions} . \\
+    {\small
+      In particular, the container includes
+      \bi
+      \item {\tt voms-proxy-init}
+      \item {\tt gfal} commands
+        (\href{http://grid-deployment.web.cern.ch/grid-deployment/dms/dmc/docs/gfal2-2.10.2/}{Grid File Access Library})
+      \item {\tt curl} (version working with proxy certificates) and other utilities
+      \ei
+    }
   \item Additional material is on \href{https://gitlab.desy.de/ildg/hands-on}{gitlab}
    \bi
    \item \href{https://gitlab.desy.de/ildg/hands-on/material.git}{exercise instructions}
@@ -760,13 +766,15 @@
    \ei
   \item Ready to get hands on? (and fingers dirty!)
 
-  \item Please also remember to prepare 1 slide/group for the wrap-up discussion on Friday 
-    \bi
-    \item Which technical aspects did not work or are difficult / inconvenient?
-    \item Which technical aspects worked well or are convenient?
-    \item Which aspects of the markup are problematic for your project?
-    \item Which elements of the metadata schema are missing / incompatible\\ for your projects?
+  \item Please also prepare 1 slide/group for the wrap-up discussion on Friday \\
+    {\small
+      \bi
+      \item Which technical aspects did not work or are difficult / inconvenient?
+      \item Which technical aspects worked well or are convenient?
+      \item Which aspects of the markup are problematic for your project?
+      \item Which elements of the metadata schema are missing / incompatible for your projects?
    \ei
+    }
   \end{dinglist}
   \vfill
 \end{frame}

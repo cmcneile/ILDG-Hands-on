@@ -89,7 +89,7 @@ Notes on preparation of the Workshop
     \item upload exercise material to \href{https://gitlab.desy.de/ildg/hands-on/material}{gitlab}
     \item register participants in VOMS \hfill{HS}
     \item extract certificate DNs for tutors 
-    (see \href{https://gitlab.desy.de/ildg/hands-on/material}{certificate-dn.txt in gitlab})     \hfill{HS}
+    (see \href{https://gitlab.desy.de/ildg/hands-on/material}{cert-dn.txt in gitlab})     \hfill{HS}
     \item create projects in ACS
     \item register participants as project managers in ACS
     \item update MDC of JLDG \hfill{BS,YN}
@@ -266,12 +266,30 @@ Panel-discussion / summary presentations by participants (1 slide / collaboratio
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Presenter: Hideo
 \begin{itemize}
-    \item tools (and active participation of community)
-    \item stabilizing services
-    \item transition to IAM and token based
-    \item MD adjustment and revision
-    \item DOI and publishing
+    \item Improve user interface
+    \begin{itemize}
+        \item Web-based interface is strongly demanded - its painful to read XML as a text file
+        \item Search: QCDml Faceted Navigation - currently not working, but to be enabled.
+        (https://www.jldg.org/facetnavi/)
+        \item Tools for markup: based on QCDml (XML schema), generation of well structured generation of XML file is (in principle) possible.
+        \item Need to consider mass production of Configuration XML files. Generate template and script to replace values.
+    \end{itemize}
+    \item Authentication
+    \begin{itemize}
+      \item transition to IAM and token based
+    \end{itemize}
+    \item Metadata adjustment and revision
+    \begin{itemize}
+        \item Currently requested: multiple configuration, Moebius domain-wall fermion, open boundary condition -> backward compatible update is possible
+        \item More drastic change: 
+        \item Now under discussion: we need your opinions.
+    \end{itemize}
     \item additional binary format (HDF5)
+    \begin{itemize}
+      \item Currently standard format is LIME.
+      \item HDF5 (Hierarchical Data Format)
+    \end{itemize}
+    \item DOI and publishing
 \end{itemize}
 
 
